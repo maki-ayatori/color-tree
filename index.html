@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>カラーツリー｜放課後等デイサービス</title>
+  <meta name="description" content="一人ひとりの個性（カラー）を大切に育む放課後等デイサービス「カラーツリー」。小学生〜高校生を対象に、個別療育・集団活動・家族支援を行っています。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#FFFDF9',
+            text: '#4A4A4A',
+            main: '#78C25D',
+            'main-dark': '#5EA847',
+            'main-light': '#E8F5E2',
+            pink: '#FF9EB5',
+            'pink-light': '#FFF0F4',
+            yellow: '#FFD166',
+            'yellow-light': '#FFF8E6',
+            blue: '#68C4E8',
+            'blue-light': '#EBF8FF',
+          },
+          fontFamily: {
+            heading: ['Kiwi Maru', 'serif'],
+            body: ['M PLUS Rounded 1c', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '16px',
+            '3xl': '24px',
+            '4xl': '32px',
+          },
+          boxShadow: {
+            soft: '0 4px 15px rgba(0,0,0,0.05)',
+            card: '0 8px 30px rgba(0,0,0,0.08)',
+            hero: '0 20px 60px rgba(120,194,93,0.2)',
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            'fade-up': 'fadeUp 0.7s ease forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            fadeUp: {
+              from: { opacity: '0', transform: 'translateY(30px)' },
+              to: { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #FFFDF9;
+      color: #4A4A4A;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Kiwi Maru', serif;
+    }
+
+    /* Scroll animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Float animation */
+    .float-anim {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50% { transform: translateY(-14px) rotate(1deg); }
+    }
+
+    /* Wave divider */
+    .wave-top {
+      position: relative;
+    }
+    .wave-top::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: inherit;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    /* Header: ヒーロー上は透明、スクロール後はすりガラス */
+    .header-on-hero {
+      background: transparent;
+    }
+    .header-scrolled {
+      background: rgba(255, 253, 249, 0.93) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    }
+    /* ヒーロー上のナビテキストは少し濃く */
+    .header-on-hero:not(.header-scrolled) .nav-link {
+      color: #3a3a3a;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.9);
+    }
+    .header-on-hero:not(.header-scrolled) .logo-text {
+      text-shadow: 0 1px 4px rgba(255,255,255,0.8);
+    }
+
+    /* Timeline */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 48px;
+      bottom: -24px;
+      width: 2px;
+      background: linear-gradient(to bottom, #78C25D, #68C4E8);
+    }
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    /* Bubble decoration */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    /* Table styles */
+    .info-table th {
+      background-color: #E8F5E2;
+      font-family: 'Kiwi Maru', serif;
+      color: #5EA847;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .info-table tr:nth-child(even) td {
+      background-color: #FAFAF7;
+    }
+
+    /* Button hover */
+    .btn-main {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(120,194,93,0.4);
+    }
+    .btn-pink {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-pink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,158,181,0.45);
+    }
+
+    /* Nav link */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #78C25D;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #78C25D; }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    /* Rainbow gradient text */
+    .rainbow-text {
+      background: linear-gradient(90deg, #FF9EB5 0%, #FFD166 30%, #78C25D 60%, #68C4E8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+
+    /* Scroll indicator bounce */
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(8px); opacity: 0.4; }
+    }
+    .scroll-bounce {
+      animation: scrollBounce 1.8s ease-in-out infinite;
+    }
+
+    /* Title highlight bar */
+    .title-highlight {
+      position: relative;
+      display: inline-block;
+    }
+    .title-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: -2px;
+      right: -2px;
+      height: 10px;
+      border-radius: 4px;
+      z-index: -1;
+      opacity: 0.35;
+    }
+    .title-highlight-pink::after  { background: #FF9EB5; }
+    .title-highlight-green::after { background: #78C25D; }
+    .title-highlight-yellow::after { background: #FFD166; }
+
+    /* Card hover */
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    /* Leaf decoration */
+    .leaf-deco {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: float 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 px-4 md:px-8 header-on-hero">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 group" aria-label="カラーツリー トップへ">
+      <div class="w-10 h-10 rounded-full bg-main flex items-center justify-center shadow-soft flex-shrink-0 group-hover:scale-110 transition-transform">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2C8 2 5 5.5 5 9c0 3 1.8 5.5 4.5 6.5V20h5v-4.5C17.2 14.5 19 12 19 9c0-3.5-3-7-7-7z" fill="white"/>
+          <rect x="10" y="19" width="4" height="3" rx="1" fill="white"/>
+        </svg>
+      </div>
+      <span class="logo-text font-heading text-main text-xl md:text-2xl font-medium tracking-wide">カラーツリー</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6" aria-label="メインナビゲーション">
+      <a href="#features" class="nav-link text-text font-body text-sm font-bold">特徴</a>
+      <a href="#schedule" class="nav-link text-text font-body text-sm font-bold">一日の流れ</a>
+      <a href="#info" class="nav-link text-text font-body text-sm font-bold">施設案内</a>
+      <a href="#contact"
+         class="btn-pink bg-pink text-white font-body font-bold text-sm px-5 py-2.5 rounded-full min-h-[44px] flex items-center shadow-soft">
+        見学・相談予約
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="md:hidden w-11 h-11 flex flex-col justify-center items-center gap-1.5 rounded-2xl bg-main-light"
+            aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-bar block w-5 h-0.5 bg-main rounded transition-all duration-300"></span>
+      <span class="menu-bar block w-5 h-0.5 bg-main rounded transition-all duration-300"></span>
+      <span class="menu-bar block w-5 h-0.5 bg-main rounded transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" role="navigation" aria-label="モバイルナビゲーション">
+    <div class="max-w-6xl mx-auto pt-4 pb-5 flex flex-col gap-3 border-t border-main-light mt-3">
+      <a href="#features" class="mobile-menu-link font-body font-bold text-text py-3 px-4 rounded-2xl hover:bg-main-light hover:text-main transition-colors min-h-[44px] flex items-center">特徴</a>
+      <a href="#schedule" class="mobile-menu-link font-body font-bold text-text py-3 px-4 rounded-2xl hover:bg-main-light hover:text-main transition-colors min-h-[44px] flex items-center">一日の流れ</a>
+      <a href="#info" class="mobile-menu-link font-body font-bold text-text py-3 px-4 rounded-2xl hover:bg-main-light hover:text-main transition-colors min-h-[44px] flex items-center">施設案内</a>
+      <a href="#contact" class="btn-pink bg-pink text-white font-body font-bold py-3 px-4 rounded-2xl text-center min-h-[44px] flex items-center justify-center shadow-soft">見学・相談予約</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section
+  id="hero"
+  aria-label="ヒーロー"
+  style="
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #FFFDF9;
+  "
+>
+
+  <!-- ── 背景画像（インラインスタイルで確実に配置） ── -->
+  <img
+    src="hero.png"
+    alt="カラフルな葉をつけた大きな木と、その隣に立つ女の子のイラスト"
+    style="
+      display: block;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      z-index: 0;
+    "
+  />
+
+  <!-- ── オーバーレイ：デスクトップ（左→透明） ── -->
+  <div
+    aria-hidden="true"
+    style="
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to right,
+        rgba(255,253,249,1)   0%,
+        rgba(255,253,249,0.96) 18%,
+        rgba(255,253,249,0.88) 35%,
+        rgba(255,253,249,0.5)  52%,
+        rgba(255,253,249,0)    68%
+      );
+    "
+  ></div>
+
+  <!-- ── オーバーレイ：モバイル補助（下→透明） ── -->
+  <div
+    aria-hidden="true"
+    style="
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 2;
+      background: linear-gradient(
+        to top,
+        rgba(255,253,249,1)    0%,
+        rgba(255,253,249,0.95) 30%,
+        rgba(255,253,249,0.7)  48%,
+        rgba(255,253,249,0)    65%
+      );
+    "
+    class="md:hidden"
+  ></div>
+
+  <!-- ── コンテンツ ── -->
+  <div
+    style="
+      position: relative;
+      z-index: 3;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6rem 1.25rem 4rem;
+    "
+    class="md:justify-center md:pt-0 md:pb-0 md:px-10"
+  >
+    <div class="max-w-6xl mx-auto w-full">
+      <div class="w-full md:max-w-[520px] lg:max-w-[580px]">
+
+        <!-- バッジ -->
+        <div class="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-5 shadow-soft"
+             style="background: rgba(255,255,255,0.88);">
+          <span class="w-2 h-2 rounded-full bg-main animate-pulse flex-shrink-0"></span>
+          <span class="font-body text-sm text-main font-bold">放課後等デイサービス</span>
+        </div>
+
+        <!-- ── キャッチコピー ── -->
+        <h1 class="font-heading leading-tight mb-6">
+          <span class="block mb-1"
+                style="font-size: clamp(2rem, 6vw, 3.6rem); color: #4A4A4A;">
+            みんな
+            <em class="not-italic title-highlight title-highlight-pink" style="color:#D6547A;">違って</em>、
+          </span>
+          <span class="block mb-4"
+                style="font-size: clamp(2rem, 6vw, 3.6rem); color: #4A4A4A;">
+            みんな
+            <em class="not-italic title-highlight title-highlight-green" style="color:#4EA83A;">いい</em>。
+          </span>
+          <span class="block leading-snug"
+                style="font-size: clamp(1.3rem, 3.5vw, 2.2rem); color: #4A4A4A;">
+            <span class="title-highlight title-highlight-yellow" style="color:#C48A00;">君だけの</span>
+            <span class="rainbow-text font-heading" style="font-size:1.22em; vertical-align:-0.05em;">色</span>を咲かせよう。
+          </span>
+        </h1>
+
+        <!-- サブコピー -->
+        <p class="font-body text-base leading-relaxed mb-8 rounded-2xl px-4 py-3 inline-block"
+           style="color: rgba(74,74,74,0.8); background: rgba(255,255,255,0.6); backdrop-filter: blur(6px);">
+          一人ひとりの個性（カラー）を大切に育む、<br class="hidden sm:block" />
+          放課後等デイサービスです。
+        </p>
+
+        <!-- CTAボタン -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <a href="#contact"
+             class="btn-main bg-main text-white font-body font-bold text-base px-8 rounded-full
+                    min-h-[52px] flex items-center justify-center gap-2 shadow-hero"
+             style="padding-top:1rem; padding-bottom:1rem;">
+            <span aria-hidden="true">🌳</span> まずは無料見学・体験へ
+          </a>
+          <a href="#about"
+             class="font-body font-bold text-main-dark text-base px-8 rounded-full
+                    min-h-[52px] flex items-center justify-center border-2 border-main
+                    hover:bg-main-light transition-colors"
+             style="padding-top:1rem; padding-bottom:1rem; background: rgba(255,255,255,0.8);">
+            施設を詳しく見る
+          </a>
+        </div>
+
+        <!-- トラストバッジ -->
+        <div class="flex flex-wrap gap-2">
+          <span class="font-body text-xs px-3 py-1.5 rounded-full shadow-soft"
+                style="background:rgba(255,255,255,0.85); border:1px solid rgba(255,209,102,0.5); color:#4A4A4A;">
+            📋 受給者証あれば利用可
+          </span>
+          <span class="font-body text-xs px-3 py-1.5 rounded-full shadow-soft"
+                style="background:rgba(255,255,255,0.85); border:1px solid rgba(104,196,232,0.5); color:#4A4A4A;">
+            🤝 無料相談実施中
+          </span>
+          <span class="font-body text-xs px-3 py-1.5 rounded-full shadow-soft"
+                style="background:rgba(255,255,255,0.85); border:1px solid rgba(255,158,181,0.5); color:#4A4A4A;">
+            🚗 送迎サービスあり
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- スクロールインジケーター -->
+  <div aria-hidden="true"
+       style="position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:4;
+              display:flex; flex-direction:column; align-items:center; gap:0.4rem; pointer-events:none;">
+    <span class="font-body" style="font-size:10px; color:rgba(74,74,74,0.35); letter-spacing:.15em;">SCROLL</span>
+    <svg class="scroll-bounce" width="20" height="20" viewBox="0 0 20 20" fill="none"
+         style="color:rgba(120,194,93,0.5);">
+      <path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section id="about" class="bg-white py-20 px-4 md:px-8 relative" aria-labelledby="about-heading">
+  <!-- Wave top -->
+  <div class="absolute top-0 left-0 right-0 overflow-hidden leading-none" style="height:60px;" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="width:100%;height:60px;">
+      <path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" fill="#FFFDF9"/>
+    </svg>
+  </div>
+
+  <div class="max-w-5xl mx-auto pt-8">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block font-body text-sm text-main font-bold bg-main-light px-4 py-1.5 rounded-full mb-4">About</span>
+      <h2 id="about-heading" class="font-heading text-3xl md:text-4xl text-text mb-4">カラーツリーの想い</h2>
+      <div class="w-16 h-1 bg-gradient-to-r from-main to-yellow rounded-full mx-auto"></div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <!-- Illustration-like block -->
+      <div class="md:w-2/5 reveal reveal-delay-1">
+        <div class="relative bg-gradient-to-br from-main-light to-blue-light rounded-3xl p-8 shadow-card text-center">
+          <p class="text-7xl mb-4" aria-hidden="true">🌳</p>
+          <div class="flex justify-center gap-2 flex-wrap">
+            <span class="bg-pink/20 text-pink font-body font-bold text-xs px-3 py-1 rounded-full">やさしさ</span>
+            <span class="bg-yellow/30 text-yellow-600 font-body font-bold text-xs px-3 py-1 rounded-full">あかるさ</span>
+            <span class="bg-blue/20 text-blue-600 font-body font-bold text-xs px-3 py-1 rounded-full">おちつき</span>
+            <span class="bg-main/20 text-main-dark font-body font-bold text-xs px-3 py-1 rounded-full">たのしさ</span>
+            <span class="bg-pink/10 text-pink font-body font-bold text-xs px-3 py-1 rounded-full">すこやか</span>
+            <span class="bg-yellow/20 text-yellow-700 font-body font-bold text-xs px-3 py-1 rounded-full">のびのび</span>
+          </div>
+          <!-- Falling leaves -->
+          <div class="absolute top-4 right-4 text-2xl animate-spin" style="animation-duration:10s;" aria-hidden="true">🍀</div>
+          <div class="absolute bottom-4 left-4 text-xl float-anim" aria-hidden="true">🌸</div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="md:w-3/5 reveal reveal-delay-2">
+        <p class="font-body text-base md:text-lg text-text/80 leading-relaxed mb-5">
+          色とりどりの葉っぱが集まってひとつの大きな木をつくるように、子どもたちが持つ<strong class="text-main font-bold">多様な個性</strong>は、どれも大切な「色」です。
+        </p>
+        <p class="font-body text-base md:text-lg text-text/80 leading-relaxed mb-5">
+          カラーツリーでは、発達に特性のある子どもたちが<strong class="text-main font-bold">「自分らしさ」を認められ、安心して過ごせる場所</strong>を大切にしています。専門のスタッフが一人ひとりに寄り添い、その子だけの成長の道筋を一緒に歩んでいきます。
+        </p>
+        <p class="font-body text-base md:text-lg text-text/80 leading-relaxed mb-8">
+          ご家族も含めたチームで支援することで、<strong class="text-main font-bold">家庭・学校・施設</strong>が一体となった温かいサポートを提供します。
+        </p>
+        <a href="#contact" class="btn-main inline-flex items-center gap-2 bg-main text-white font-body font-bold px-6 py-3 rounded-full shadow-soft min-h-[44px]">
+          <span>無料相談はこちら</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FEATURES
+============================================================ -->
+<section id="features" class="py-20 px-4 md:px-8 relative overflow-hidden" aria-labelledby="features-heading">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-30" aria-hidden="true"
+       style="background-image: radial-gradient(circle, #78C25D22 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+  <div class="max-w-5xl mx-auto relative">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block font-body text-sm text-main font-bold bg-main-light px-4 py-1.5 rounded-full mb-4">Features</span>
+      <h2 id="features-heading" class="font-heading text-3xl md:text-4xl text-text mb-4">カラーツリーの3つの特徴</h2>
+      <div class="w-16 h-1 bg-gradient-to-r from-main to-pink rounded-full mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <!-- Card 1: 個別療育 -->
+      <article class="feature-card bg-white rounded-3xl p-8 shadow-soft reveal reveal-delay-1" aria-label="個性を伸ばす個別療育">
+        <div class="w-16 h-16 rounded-2xl bg-yellow-light flex items-center justify-center mb-5 shadow-soft">
+          <span class="text-3xl" aria-hidden="true">✨</span>
+        </div>
+        <div class="w-8 h-1 bg-yellow rounded-full mb-4"></div>
+        <h3 class="font-heading text-xl text-text mb-3">個性を伸ばす<br/>個別療育</h3>
+        <p class="font-body text-sm text-text/70 leading-relaxed">
+          一人ひとりの発達段階・特性に合わせたオーダーメイドの支援計画を作成。専門スタッフがマンツーマンで関わり、苦手なことへの支援と得意なことの強化を丁寧に行います。
+        </p>
+        <div class="mt-5 pt-5 border-t border-yellow/30">
+          <ul class="font-body text-xs text-text/60 space-y-1.5">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow flex-shrink-0"></span>個別支援計画の作成</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow flex-shrink-0"></span>感覚統合・運動支援</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow flex-shrink-0"></span>学習支援・SST</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Card 2: 集団活動 -->
+      <article class="feature-card bg-white rounded-3xl p-8 shadow-soft reveal reveal-delay-2" aria-label="社会性を育む集団活動">
+        <div class="w-16 h-16 rounded-2xl bg-blue-light flex items-center justify-center mb-5 shadow-soft">
+          <span class="text-3xl" aria-hidden="true">🤝</span>
+        </div>
+        <div class="w-8 h-1 bg-blue rounded-full mb-4"></div>
+        <h3 class="font-heading text-xl text-text mb-3">社会性を育む<br/>集団活動</h3>
+        <p class="font-body text-sm text-text/70 leading-relaxed">
+          クッキングや工作、お出かけなど楽しいプログラムを通じて、友だちとの関わり方・コミュニケーション力・ルールを守る力を自然に育みます。
+        </p>
+        <div class="mt-5 pt-5 border-t border-blue/30">
+          <ul class="font-body text-xs text-text/60 space-y-1.5">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue flex-shrink-0"></span>クッキング・工作活動</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue flex-shrink-0"></span>季節のイベント</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue flex-shrink-0"></span>地域との交流活動</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Card 3: 家族連携 -->
+      <article class="feature-card bg-white rounded-3xl p-8 shadow-soft reveal reveal-delay-3" aria-label="ご家族との連携・サポート">
+        <div class="w-16 h-16 rounded-2xl bg-pink-light flex items-center justify-center mb-5 shadow-soft">
+          <span class="text-3xl" aria-hidden="true">💝</span>
+        </div>
+        <div class="w-8 h-1 bg-pink rounded-full mb-4"></div>
+        <h3 class="font-heading text-xl text-text mb-3">ご家族との<br/>連携・サポート</h3>
+        <p class="font-body text-sm text-text/70 leading-relaxed">
+          毎日の連絡帳や定期的な面談で、お子さんの様子をこまめにご報告。保護者の方の「困った」にも寄り添い、一緒に考えていきます。
+        </p>
+        <div class="mt-5 pt-5 border-t border-pink/30">
+          <ul class="font-body text-xs text-text/60 space-y-1.5">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink flex-shrink-0"></span>毎日の連絡帳・報告</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink flex-shrink-0"></span>定期的な個別面談</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink flex-shrink-0"></span>関係機関との連携</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SCHEDULE
+============================================================ -->
+<section id="schedule" class="bg-white py-20 px-4 md:px-8 relative" aria-labelledby="schedule-heading">
+  <!-- Wave top -->
+  <div class="absolute top-0 left-0 right-0 overflow-hidden leading-none" style="height:60px;" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="width:100%;height:60px;">
+      <path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" fill="#FFFDF9"/>
+    </svg>
+  </div>
+
+  <div class="max-w-3xl mx-auto pt-8">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block font-body text-sm text-main font-bold bg-main-light px-4 py-1.5 rounded-full mb-4">Schedule</span>
+      <h2 id="schedule-heading" class="font-heading text-3xl md:text-4xl text-text mb-4">一日の流れ</h2>
+      <p class="font-body text-sm text-text/60">平日（学校のある日）の放課後スケジュール</p>
+      <div class="w-16 h-1 bg-gradient-to-r from-blue to-main rounded-full mx-auto mt-4"></div>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Timeline items -->
+      <div class="timeline-item relative pl-14 reveal">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-main flex items-center justify-center shadow-soft flex-shrink-0">
+          <span class="text-lg" aria-hidden="true">🚌</span>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-soft border-l-4 border-main">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-heading text-main text-lg font-medium">15:00</span>
+            <span class="bg-main-light text-main font-body text-xs px-2 py-0.5 rounded-full font-bold">お迎え</span>
+          </div>
+          <p class="font-body text-sm text-text/80 font-bold">学校へお迎え</p>
+          <p class="font-body text-xs text-text/60 mt-1">スタッフが学校または自宅までお迎えに伺います。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item relative pl-14 reveal reveal-delay-1">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-yellow flex items-center justify-center shadow-soft flex-shrink-0">
+          <span class="text-lg" aria-hidden="true">🍎</span>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-soft border-l-4 border-yellow">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-heading text-yellow-600 text-lg font-medium">15:30</span>
+            <span class="bg-yellow-light text-yellow-700 font-body text-xs px-2 py-0.5 rounded-full font-bold">準備</span>
+          </div>
+          <p class="font-body text-sm text-text/80 font-bold">手洗い・うがい・おやつ</p>
+          <p class="font-body text-xs text-text/60 mt-1">到着後は手洗い・うがいをして、みんなで楽しくおやつタイム。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item relative pl-14 reveal reveal-delay-2">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-blue flex items-center justify-center shadow-soft flex-shrink-0">
+          <span class="text-lg" aria-hidden="true">📚</span>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-soft border-l-4 border-blue">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-heading text-blue-600 text-lg font-medium">16:00</span>
+            <span class="bg-blue-light text-blue-700 font-body text-xs px-2 py-0.5 rounded-full font-bold">メイン</span>
+          </div>
+          <p class="font-body text-sm text-text/80 font-bold">個別・集団プログラム</p>
+          <p class="font-body text-xs text-text/60 mt-1">個別療育や集団活動、学習支援など各自の支援計画に沿ったプログラムを行います。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item relative pl-14 reveal reveal-delay-1">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-pink flex items-center justify-center shadow-soft flex-shrink-0">
+          <span class="text-lg" aria-hidden="true">🎮</span>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-soft border-l-4 border-pink">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-heading text-pink font-medium text-lg">17:00</span>
+            <span class="bg-pink-light text-pink font-body text-xs px-2 py-0.5 rounded-full font-bold">自由時間</span>
+          </div>
+          <p class="font-body text-sm text-text/80 font-bold">自由遊び・休息</p>
+          <p class="font-body text-xs text-text/60 mt-1">思い思いに好きな遊びや読書、お友だちとの時間を過ごします。</p>
+        </div>
+      </div>
+
+      <div class="relative pl-14 reveal reveal-delay-2">
+        <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-main flex items-center justify-center shadow-soft flex-shrink-0">
+          <span class="text-lg" aria-hidden="true">🏠</span>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-soft border-l-4 border-main">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-heading text-main text-lg font-medium">17:30</span>
+            <span class="bg-main-light text-main font-body text-xs px-2 py-0.5 rounded-full font-bold">送迎</span>
+          </div>
+          <p class="font-body text-sm text-text/80 font-bold">ご自宅へ送迎</p>
+          <p class="font-body text-xs text-text/60 mt-1">スタッフが安全にご自宅までお送りします。連絡帳でその日の様子をお伝えします。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Note -->
+    <div class="mt-8 bg-yellow-light rounded-2xl p-5 flex items-start gap-3 reveal">
+      <span class="text-2xl flex-shrink-0" aria-hidden="true">ℹ️</span>
+      <p class="font-body text-sm text-text/70">
+        <strong class="text-text">お休みの日（土曜・長期休暇）</strong>は 10:00〜17:00 での開所となります。午前中から一日たっぷりのプログラムをご用意しています。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     INFO
+============================================================ -->
+<section id="info" class="py-20 px-4 md:px-8 relative overflow-hidden" aria-labelledby="info-heading">
+  <div class="absolute inset-0 opacity-20" aria-hidden="true"
+       style="background-image: radial-gradient(circle, #FF9EB522 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+  <div class="max-w-5xl mx-auto relative">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block font-body text-sm text-main font-bold bg-main-light px-4 py-1.5 rounded-full mb-4">Access &amp; Info</span>
+      <h2 id="info-heading" class="font-heading text-3xl md:text-4xl text-text mb-4">施設案内</h2>
+      <div class="w-16 h-1 bg-gradient-to-r from-pink to-yellow rounded-full mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <!-- Table -->
+      <div class="bg-white rounded-3xl shadow-card overflow-hidden reveal reveal-delay-1">
+        <table class="info-table w-full border-collapse" aria-label="施設情報">
+          <caption class="font-heading text-text text-lg p-5 text-left border-b border-gray-100">
+            <span class="text-main">📋</span> 施設情報
+          </caption>
+          <tbody>
+            <tr>
+              <th scope="row" class="p-4 text-sm text-left w-1/3 align-top">対象年齢</th>
+              <td class="p-4 font-body text-sm text-text/80">小学生〜高校生<br/><span class="text-xs text-text/50">（受給者証をお持ちの方）</span></td>
+            </tr>
+            <tr>
+              <th scope="row" class="p-4 text-sm text-left align-top">開所時間</th>
+              <td class="p-4 font-body text-sm text-text/80">
+                平日　13:00〜18:00<br/>
+                土曜・休日　10:00〜17:00<br/>
+                <span class="text-xs text-text/50">※日曜・祝日・年末年始は休業</span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="p-4 text-sm text-left align-top">定員</th>
+              <td class="p-4 font-body text-sm text-text/80">10名／日</td>
+            </tr>
+            <tr>
+              <th scope="row" class="p-4 text-sm text-left align-top">住所</th>
+              <td class="p-4 font-body text-sm text-text/80">
+                〒000-0000<br/>
+                ○○県○○市○○町1-2-3<br/>
+                ○○ビル 2F
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="p-4 text-sm text-left align-top">電話番号</th>
+              <td class="p-4 font-body text-sm">
+                <a href="tel:000-000-0000" class="text-main font-bold text-lg hover:text-main-dark transition-colors">000-000-0000</a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="p-4 text-sm text-left align-top">アクセス</th>
+              <td class="p-4 font-body text-sm text-text/80">○○線「○○駅」徒歩5分<br/>駐車場3台完備</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Map -->
+      <div class="reveal reveal-delay-2">
+        <div class="bg-white rounded-3xl shadow-card overflow-hidden">
+          <div class="p-5 border-b border-gray-100">
+            <p class="font-heading text-text text-lg"><span class="text-main">📍</span> アクセスマップ</p>
+          </div>
+          <div class="relative" style="padding-top:66%;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.827853432888!2d139.7670518154!3d35.6811845801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1640000000000!5m2!1sja!2sjp"
+              class="absolute inset-0 w-full h-full border-0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="カラーツリーへのアクセスマップ"
+              aria-label="Googleマップ：カラーツリーの所在地"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Phone CTA -->
+        <div class="mt-5 bg-main-light rounded-2xl p-5 text-center reveal">
+          <p class="font-body text-sm text-text/70 mb-2">お電話でのご相談・お問い合わせ</p>
+          <a href="tel:000-000-0000" class="font-heading text-main text-3xl font-medium hover:text-main-dark transition-colors block mb-1">
+            000-000-0000
+          </a>
+          <p class="font-body text-xs text-text/50">受付時間：平日 10:00〜18:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT CTA
+============================================================ -->
+<section id="contact" class="py-20 px-4 md:px-8" aria-labelledby="contact-heading">
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-gradient-to-br from-main to-main-dark rounded-4xl p-10 md:p-14 text-center shadow-hero relative overflow-hidden reveal">
+      <!-- Decorative circles -->
+      <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10"></div>
+      <div class="absolute -bottom-10 -left-10 w-56 h-56 rounded-full bg-white/10"></div>
+      <div class="absolute top-1/2 right-10 w-20 h-20 rounded-full bg-yellow/20"></div>
+
+      <p class="text-4xl mb-4 relative z-10" aria-hidden="true">🌳</p>
+      <h2 id="contact-heading" class="font-heading text-2xl md:text-3xl text-white mb-4 relative z-10">
+        まずは気軽に<br/>見学・ご相談ください
+      </h2>
+      <p class="font-body text-white/80 text-sm md:text-base mb-8 leading-relaxed relative z-10">
+        見学は無料です。お子さんの様子やご不安なこと、<br class="hidden sm:block"/>
+        どんな些細なことでもお気軽にご相談ください。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+        <a href="tel:000-000-0000"
+           class="bg-white text-main font-body font-bold text-base px-8 py-4 rounded-full min-h-[52px] flex items-center justify-center gap-2 shadow-soft hover:bg-main-light transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#78C25D"/>
+          </svg>
+          電話で相談する
+        </a>
+        <a href="#"
+           class="btn-pink bg-pink text-white font-body font-bold text-base px-8 py-4 rounded-full min-h-[52px] flex items-center justify-center gap-2 shadow-soft">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="white" stroke-width="2"/>
+            <path d="M3 9h18M8 2v4M16 2v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          見学予約フォームへ
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="bg-main-dark py-12 px-4 md:px-8" role="contentinfo">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-10 mb-10">
+      <!-- Brand -->
+      <div class="md:w-1/3">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C8 2 5 5.5 5 9c0 3 1.8 5.5 4.5 6.5V20h5v-4.5C17.2 14.5 19 12 19 9c0-3.5-3-7-7-7z" fill="white"/>
+              <rect x="10" y="19" width="4" height="3" rx="1" fill="white"/>
+            </svg>
+          </div>
+          <span class="font-heading text-white text-xl">カラーツリー</span>
+        </div>
+        <p class="font-body text-white/70 text-sm leading-relaxed">
+          一人ひとりの個性（カラー）を大切に育む、放課後等デイサービスです。
+        </p>
+        <p class="font-body text-white/50 text-xs mt-4">
+          〒000-0000 ○○県○○市○○町1-2-3<br/>
+          TEL: <a href="tel:000-000-0000" class="hover:text-white transition-colors">000-000-0000</a>
+        </p>
+      </div>
+
+      <!-- Sitemap -->
+      <nav class="md:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-6" aria-label="フッターナビゲーション">
+        <div>
+          <p class="font-heading text-white text-sm font-medium mb-3 opacity-90">サービス</p>
+          <ul class="font-body text-white/60 text-sm space-y-2">
+            <li><a href="#about" class="hover:text-white transition-colors hover:pl-1 inline-block transition-all">カラーツリーについて</a></li>
+            <li><a href="#features" class="hover:text-white transition-colors hover:pl-1 inline-block transition-all">3つの特徴</a></li>
+            <li><a href="#schedule" class="hover:text-white transition-colors hover:pl-1 inline-block transition-all">一日の流れ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-heading text-white text-sm font-medium mb-3 opacity-90">施設情報</p>
+          <ul class="font-body text-white/60 text-sm space-y-2">
+            <li><a href="#info" class="hover:text-white transition-colors hover:pl-1 inline-block transition-all">施設案内・アクセス</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors hover:pl-1 inline-block transition-all">見学予約・相談</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-heading text-white text-sm font-medium mb-3 opacity-90">お問い合わせ</p>
+          <ul class="font-body text-white/60 text-sm space-y-2">
+            <li>
+              <a href="tel:000-000-0000" class="hover:text-white transition-colors flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+                </svg>
+                000-000-0000
+              </a>
+            </li>
+            <li><a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="border-t border-white/20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-body text-white/40 text-xs text-center sm:text-left">
+        © 2026 カラーツリー（放課後等デイサービス）All Rights Reserved.
+      </p>
+      <p class="font-body text-white/30 text-xs">
+        障害児通所支援事業所
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  // === Header scroll effect ===
+  const header = document.getElementById('header');
+  const heroSection = document.querySelector('section[aria-label="ヒーロー"]');
+  const onScroll = () => {
+    const heroBottom = heroSection ? heroSection.offsetHeight - 60 : 80;
+    if (window.scrollY > heroBottom) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // === Mobile menu toggle ===
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuBars = document.querySelectorAll('.menu-bar');
+  let menuOpen = false;
+
+  menuToggle.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    menuToggle.setAttribute('aria-expanded', menuOpen);
+
+    if (menuOpen) {
+      menuBars[0].style.transform = 'translateY(7px) rotate(45deg)';
+      menuBars[1].style.opacity = '0';
+      menuBars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    } else {
+      menuBars[0].style.transform = '';
+      menuBars[1].style.opacity = '';
+      menuBars[2].style.transform = '';
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuBars[0].style.transform = '';
+      menuBars[1].style.opacity = '';
+      menuBars[2].style.transform = '';
+    });
+  });
+
+  // === Scroll reveal animation ===
+  const reveals = document.querySelectorAll('.reveal');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // === Smooth scroll for anchor links ===
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const headerHeight = header.offsetHeight + 16;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
