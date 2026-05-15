@@ -111,8 +111,53 @@
       border-bottom: 2px solid #78C25D;
       transform: rotate(45deg);
     }
-    .lp-flow { counter-reset: flow-step; }
-    .lp-flow-step { counter-increment: flow-step; }
+    .lp-flow {
+      counter-reset: flow-step;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .lp-flow > li {
+      counter-increment: flow-step;
+      position: relative;
+      width: 100%;
+      max-width: 16rem;
+    }
+    .lp-flow > li:not(:last-child)::after {
+      content: "↓";
+      display: block;
+      text-align: center;
+      color: #78C25D;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.4rem 0;
+    }
+    @media (min-width: 768px) {
+      .lp-flow {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+      .lp-flow > li {
+        flex: 1;
+        max-width: none;
+      }
+      .lp-flow > li:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        right: -0.85rem;
+        top: 1.65rem;
+        padding: 0;
+        font-size: 1.15rem;
+        z-index: 1;
+        line-height: 1;
+      }
+    }
     .lp-flow-num::before { content: counter(flow-step); }
     .reveal { opacity: 0; transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal-slide-up { transform: translateY(20px); }
@@ -391,7 +436,7 @@
         <h2 class="lp-section-title">ご利用の流れ</h2>
         <p class="lp-lead mt-3 px-2">見学・相談は無料です。受給者証の手続きなど、わからないことはスタッフがサポートします。</p>
       </div>
-      <ol class="lp-flow grid grid-cols-2 md:grid-cols-5 gap-3 reveal reveal-slide-up">
+      <ol class="lp-flow reveal reveal-slide-up">
         <li class="bg-base rounded-xl p-4 text-center border border-brand-light">
           <span class="lp-flow-num inline-flex w-9 h-9 rounded-full bg-brand text-white text-sm font-bold items-center justify-center mb-2"></span>
           <p class="font-bold text-xs mb-1" style="color:#0f172a">電話</p>
