@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ゲーム好き・画面好き。それ、才能のサインかも｜カラーツリー</title>
-  <meta name="description" content="児童発達支援・放課後等デイサービス「カラーツリー」。ゲーム好き・画面好きを、遊びながら体験できるAIへ。心理カウンセラー常駐。北九州市小倉南区。" />
+  <title>好きなことは、そのまま。その子らしさも、一緒に｜カラーツリー</title>
+  <meta name="description" content="好きなことは、そのまま。その子らしさも、一緒に。児童発達支援・放課後等デイサービス「カラーツリー」。療育のなかでAIの遊びや創作にも触れられます。心理カウンセラー常駐。北九州市小倉南区。" />
   <link rel="icon" href="../favicon_io/favicon.ico" sizes="any" />
   <meta name="theme-color" content="#78C25D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,16 +17,10 @@
         extend: {
           colors: {
             base: '#FFFDF9',
-            brand: {
-              DEFAULT: '#78C25D',
-              dark: '#5EA847',
-              light: '#E8F5E2',
-            },
+            brand: { DEFAULT: '#78C25D', dark: '#5EA847', light: '#E8F5E2' },
             accent: '#FFD166',
           },
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
-          },
+          fontFamily: { sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'] },
           boxShadow: {
             soft: '0 4px 15px rgba(0,0,0,0.05)',
             card: '0 8px 30px rgba(0,0,0,0.08)',
@@ -37,353 +31,382 @@
     };
   </script>
   <style>
-    body {
-      font-feature-settings: "palt" 1;
-      background-color: #FFFDF9;
-      color: #334155;
-      scroll-behavior: smooth;
-    }
-    /* 見出し・本文の色を固定（Tailwindの色名競合を避ける） */
-    .lp-h1, .lp-h2, .lp-h3 { color: #0f172a !important; }
-    .lp-body { color: #1e293b !important; }
-    .lp-muted { color: #475569 !important; }
-    .lp-on-green { color: #ffffff; }
-    .lp-on-green-muted { color: rgba(255, 255, 255, 0.92); }
+    body { font-feature-settings: "palt" 1; background-color: #FFFDF9; scroll-behavior: smooth; }
+    .lp-on-green { color: #fff; }
+    .lp-on-green-muted { color: rgba(255,255,255,0.92); }
     .lp-accent-on-green { color: #FFD166; }
-    .reveal {
-      opacity: 0;
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    .lp-section-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; color: #5EA847; margin-bottom: 0.35rem; }
+    .lp-section-title { font-size: clamp(1.25rem, 4vw, 1.75rem); font-weight: 700; line-height: 1.35; color: #0f172a; }
+    .lp-photo { border-radius: 1rem; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .lp-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lp-point { background: #fff; border-radius: 1rem; padding: 1rem; text-align: center; border: 1px solid #E8F5E2; }
+    .lp-point-icon { font-size: 1.75rem; line-height: 1; margin-bottom: 0.35rem; }
+    .lp-point-title { font-weight: 700; font-size: 0.9rem; color: #0f172a; }
+    .lp-point-desc { font-size: 0.75rem; color: #64748b; margin-top: 0.15rem; line-height: 1.5; }
+    .lp-lead { font-size: 0.9rem; line-height: 1.7; color: #475569; max-width: 42rem; margin-left: auto; margin-right: auto; }
+    .lp-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 3rem;
+      padding: 0.75rem 1.75rem;
+      line-height: 1.35;
+      text-align: center;
+      white-space: nowrap;
+      align-self: flex-start;
     }
-    .reveal-slide-up { transform: translateY(28px); }
-    .reveal-slide-left { transform: translateX(-36px); }
-    .reveal-slide-right { transform: translateX(36px); }
-    .reveal.visible {
-      opacity: 1;
-      transform: translate(0, 0);
+    @media (max-width: 380px) {
+      .lp-cta { white-space: normal; max-width: 100%; }
     }
-    .reveal-delay-1 { transition-delay: 0.08s; }
-    .reveal-delay-2 { transition-delay: 0.16s; }
-    .reveal-delay-3 { transition-delay: 0.24s; }
+    .lp-contact-mascot {
+      width: clamp(5.5rem, 22vw, 8.5rem);
+      height: auto;
+      display: block;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.15));
+    }
+    .lp-flow { counter-reset: flow-step; }
+    .lp-flow-step { counter-increment: flow-step; }
+    .lp-flow-num::before { content: counter(flow-step); }
+    .reveal { opacity: 0; transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal-slide-up { transform: translateY(20px); }
+    .reveal-slide-left { transform: translateX(-24px); }
+    .reveal-slide-right { transform: translateX(24px); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.06s; }
+    .reveal-delay-2 { transition-delay: 0.12s; }
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-slide-up, .reveal-slide-left, .reveal-slide-right {
-        transition: none !important;
-        transform: none !important;
-        opacity: 1 !important;
-      }
-      .hero-game-deco { animation: none !important; }
-    }
-    .hero-game-deco {
-      animation: hero-deco-float 5s ease-in-out infinite;
-    }
-    @keyframes hero-deco-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
     }
   </style>
   <script src="../js/ga.js" defer></script>
 </head>
-<body class="bg-base font-sans antialiased leading-relaxed">
+<body class="bg-base font-sans antialiased text-slate-700 leading-relaxed">
 
   <header class="border-b border-brand-light bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-    <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
-      <a href="../index.html" class="flex items-center gap-2.5 group shrink-0 min-w-0" aria-label="カラーツリー 公式サイトへ">
-        <img
-          src="../favicon_io/favicon-32x32.webp"
-          alt=""
-          width="32"
-          height="32"
-          class="w-8 h-8 flex-shrink-0 object-contain group-hover:scale-105 transition-transform"
-          aria-hidden="true"
-        />
-        <span class="text-base font-bold whitespace-nowrap shrink-0" style="color:#5EA847">カラーツリー</span>
+    <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-2">
+      <a href="../index.html" class="flex items-center gap-2 shrink-0" aria-label="公式サイトへ">
+        <img src="../favicon_io/favicon-32x32.webp" alt="" width="32" height="32" class="w-8 h-8 object-contain" aria-hidden="true" />
+        <span class="text-base font-bold" style="color:#5EA847">カラーツリー</span>
       </a>
-      <nav class="hidden sm:flex items-center gap-5 text-sm font-medium lp-body">
-        <a href="#ai-experience" class="hover:text-brand-dark">AI体験</a>
-        <a href="#games" class="hover:text-brand-dark">ゲーム</a>
-        <a href="#counselor" class="hover:text-brand-dark">カウンセラー</a>
-      </nav>
-      <a href="tel:093-967-1522" class="text-sm font-bold text-white bg-brand hover:bg-brand-dark px-4 py-2 rounded-full transition-colors shrink-0">
-        電話する
-      </a>
+      <a href="tel:093-967-1522" class="text-xs sm:text-sm font-bold text-white bg-brand hover:bg-brand-dark px-3 sm:px-4 py-2 rounded-full shrink-0">お電話ください</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-brand via-brand to-brand-dark shadow-hero">
-    <div
-      class="hero-game-deco absolute bottom-0 right-0 w-[min(72vw,320px)] md:w-[360px] pointer-events-none select-none opacity-90 md:opacity-95 translate-x-[8%] translate-y-[6%] md:translate-x-0 md:translate-y-0"
-      aria-hidden="true"
-    >
-      <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-lg">
-        <ellipse cx="200" cy="200" rx="110" ry="70" fill="#ffffff" fill-opacity="0.08"/>
-        <g fill="#FFD166" fill-opacity="0.85">
-          <rect x="248" y="48" width="14" height="14" rx="2"/>
-          <rect x="266" y="66" width="14" height="14" rx="2"/>
-          <rect x="230" y="66" width="14" height="14" rx="2" fill="#ffffff" fill-opacity="0.5"/>
-        </g>
-        <g fill="#ffffff" fill-opacity="0.35">
-          <rect x="36" y="72" width="12" height="12" rx="2"/>
-          <rect x="54" y="90" width="12" height="12" rx="2"/>
-          <rect x="18" y="90" width="12" height="12" rx="2"/>
-        </g>
-        <path d="M72 42l3.2 6.5 7.2 1-5.2 5.1 1.2 7.1L72 58.2 65.6 61.7l1.2-7.1-5.2-5.1 7.2-1L72 42z" fill="#FFD166" fill-opacity="0.9"/>
-        <circle cx="278" cy="118" r="10" fill="#FFD166" fill-opacity="0.75"/>
-        <circle cx="278" cy="118" r="6" fill="#5EA847" fill-opacity="0.5"/>
-        <g transform="translate(28, 128)">
-          <rect x="0" y="0" width="88" height="62" rx="10" fill="#ffffff" fill-opacity="0.18" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
-          <rect x="8" y="8" width="72" height="46" rx="6" fill="#5EA847" fill-opacity="0.35"/>
-          <path d="M38 22 L38 40 L54 31 Z" fill="#FFD166"/>
-          <circle cx="18" cy="52" r="3" fill="#FFD166" fill-opacity="0.8"/>
-          <circle cx="28" cy="52" r="3" fill="#ffffff" fill-opacity="0.5"/>
-          <circle cx="38" cy="52" r="3" fill="#ffffff" fill-opacity="0.5"/>
-        </g>
-        <g transform="translate(72, 108)">
-          <path d="M88 52 C88 28 108 12 136 12 C164 12 184 28 184 52 C184 76 204 88 204 108 C204 132 180 148 136 148 C92 148 68 132 68 108 C68 88 88 76 88 52Z" fill="#ffffff" fill-opacity="0.22" stroke="#ffffff" stroke-opacity="0.45" stroke-width="2.5"/>
-          <circle cx="108" cy="78" r="22" fill="#5EA847" fill-opacity="0.45" stroke="#ffffff" stroke-opacity="0.4" stroke-width="2"/>
-          <circle cx="108" cy="78" r="10" fill="#ffffff" fill-opacity="0.55"/>
-          <rect x="94" y="108" width="28" height="8" rx="2" fill="#ffffff" fill-opacity="0.7"/>
-          <rect x="104" y="98" width="8" height="28" rx="2" fill="#ffffff" fill-opacity="0.7"/>
-          <circle cx="168" cy="98" r="11" fill="#FFD166" fill-opacity="0.95"/>
-          <circle cx="188" cy="118" r="11" fill="#ffffff" fill-opacity="0.65"/>
-          <text x="164" y="102" font-size="10" font-weight="700" fill="#5EA847" font-family="system-ui,sans-serif">A</text>
-          <text x="184" y="122" font-size="10" font-weight="700" fill="#5EA847" font-family="system-ui,sans-serif">B</text>
-          <rect x="78" y="36" width="36" height="10" rx="5" fill="#ffffff" fill-opacity="0.35"/>
-          <rect x="158" y="36" width="36" height="10" rx="5" fill="#ffffff" fill-opacity="0.35"/>
-        </g>
-        <g transform="translate(220, 24)">
-          <rect x="0" y="0" width="56" height="28" rx="14" fill="#ffffff" fill-opacity="0.2" stroke="#FFD166" stroke-opacity="0.6" stroke-width="1.5"/>
-          <text x="28" y="19" text-anchor="middle" font-size="13" font-weight="700" fill="#FFD166" font-family="system-ui,sans-serif">+1</text>
-        </g>
-        <path d="M196 196c0-8 6-14 14-14 5 0 9 2 12 6 3-4 7-6 12-6 8 0 14 6 14 14 0 16-26 26-26 26s-26-10-26-26z" fill="#ffffff" fill-opacity="0.25" stroke="#FFD166" stroke-opacity="0.5" stroke-width="1.5"/>
-        <path d="M48 200 Q120 230 200 210" stroke="#ffffff" stroke-opacity="0.15" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"/>
-      </svg>
-    </div>
-
-    <div class="max-w-4xl mx-auto px-4 py-12 md:py-16 pb-28 sm:pb-12 relative z-10">
-      <div class="reveal reveal-slide-up">
-        <p class="text-xs font-bold lp-on-green-muted mb-4">児童発達支援・放課後等デイサービス「カラーツリー」</p>
-
-        <h1 class="lp-h1 text-2xl md:text-[2.1rem] font-bold leading-tight mb-5 lp-on-green">
-          ゲーム好き・画面好き。<br />
-          それ、<span class="lp-accent-on-green">才能のサイン</span>かもしれません。
-        </h1>
-
-        <p class="text-base md:text-lg font-medium lp-on-green-muted mb-6 max-w-2xl">
-          カラーツリーでは、その「好き」を否定せず、<strong class="lp-on-green font-bold">将来につながるAI</strong>を遊びながら体験できる場所です。
-        </p>
-
-        <ul class="space-y-2.5 text-sm md:text-base lp-on-green-muted mb-8">
-          <li class="flex gap-2 items-start">
-            <span class="lp-accent-on-green font-bold shrink-0">✓</span>
-            <span>AIのゲーム・創作を<strong class="lp-on-green font-semibold">遊びながら体験</strong>（全6種）</span>
-          </li>
-          <li class="flex gap-2 items-start">
-            <span class="lp-accent-on-green font-bold shrink-0">✓</span>
-            <span><strong class="lp-on-green font-semibold">心理カウンセラー常駐</strong> — お子さまも保護者さまも相談OK</span>
-          </li>
-          <li class="flex gap-2 items-start">
-            <span class="lp-accent-on-green font-bold shrink-0">✓</span>
-            <span>未就学児〜高校生（<strong class="lp-on-green font-semibold">受給者証</strong>をお持ちの方）</span>
-          </li>
-        </ul>
-
-        <div class="flex flex-col sm:flex-row gap-3">
-          <a href="#games" class="inline-flex justify-center items-center min-h-[48px] px-6 text-base font-bold bg-white text-brand-dark rounded-full shadow-soft hover:bg-brand-light transition-colors">
-            どんなゲーム？を見る
-          </a>
-          <a href="tel:093-967-1522" class="inline-flex justify-center items-center min-h-[48px] px-6 text-base font-bold border-2 border-white lp-on-green rounded-full hover:bg-white/15 transition-colors">
-            093-967-1522
-          </a>
+  <!-- 1. Hero -->
+  <section class="bg-gradient-to-br from-brand via-brand to-brand-dark shadow-hero" aria-label="メインビジュアル">
+    <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div class="reveal reveal-slide-up flex flex-col items-start">
+          <p class="text-xs font-bold lp-on-green-muted mb-2">児童発達支援・放課後等デイサービス</p>
+          <h1 class="text-2xl md:text-3xl font-bold leading-tight lp-on-green mb-4">
+            好きなことは、そのまま。<br />
+            「<span class="lp-accent-on-green">その子らしさ</span>」も、一緒に。
+          </h1>
+          <p class="text-base lp-on-green-muted mb-2">療育のなかで、<strong class="lp-on-green">AIの遊びや創作</strong>にも触れられます。</p>
+          <p class="text-sm lp-on-green-muted mb-6">北九州市小倉南区。心理カウンセラー常駐・定員10名の小規模施設です。</p>
+          <a href="tel:093-967-1522" class="lp-cta font-bold bg-white rounded-full shadow-soft hover:bg-brand-light transition-colors" style="color:#5EA847">見学・相談は無料（電話する）</a>
+        </div>
+        <div class="lp-photo aspect-[4/3] reveal reveal-slide-right reveal-delay-1">
+          <img src="hero.png" alt="カラーツリーで笑顔で活動するお子さまとスタッフ" width="800" height="600" loading="eager" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3 steps -->
-  <section id="ai-experience" class="bg-white border-b border-brand-light py-12 md:py-14">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="lp-h2 text-xl md:text-2xl font-bold text-center reveal reveal-slide-up">
-        好きを、未来の力に変える<br class="sm:hidden" /><span class="text-brand-dark">3つのこと</span>
-      </h2>
-      <p class="mt-3 text-center lp-body text-sm md:text-base max-w-2xl mx-auto reveal reveal-slide-up">
-        難しい言葉は使いません。まず「楽しい」から始めて、少しずつAIに慣れていきます。
-      </p>
+  <!-- パッとわかる4つ -->
+  <section class="py-8 md:py-10 bg-white border-b border-brand-light" aria-label="特徴">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="text-center text-sm font-bold mb-1" style="color:#5EA847">カラーツリーの特徴</p>
+      <p class="text-center lp-lead mb-6 px-2">療育・遊び・心のケアを、ひとつの場所で。初めての方でも、ここだけ読めば全体像がつかめます。</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 reveal reveal-slide-up">
+        <div class="lp-point">
+          <p class="lp-point-icon" aria-hidden="true">👶</p>
+          <p class="lp-point-title">未就学〜高校生</p>
+          <p class="lp-point-desc">受給者証をお持ちの方がご利用できます</p>
+        </div>
+        <div class="lp-point">
+          <p class="lp-point-icon" aria-hidden="true">🤖</p>
+          <p class="lp-point-title">AI体験あり</p>
+          <p class="lp-point-desc">難しい操作は不要。療育の流れのなかで自然に</p>
+        </div>
+        <div class="lp-point">
+          <p class="lp-point-icon" aria-hidden="true">💚</p>
+          <p class="lp-point-title">カウンセラー常駐</p>
+          <p class="lp-point-desc">お子さまも保護者さまも、気持ちに寄り添います</p>
+        </div>
+        <div class="lp-point">
+          <p class="lp-point-icon" aria-hidden="true">🏠</p>
+          <p class="lp-point-title">定員10名／日</p>
+          <p class="lp-point-desc">少人数だから、きめ細かく見守れます</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <ol class="mt-8 space-y-4">
-        <li class="reveal reveal-slide-up reveal-delay-1 flex gap-4 bg-white rounded-2xl p-5 border-l-4 border-brand shadow-soft">
-          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand text-white font-bold text-lg flex items-center justify-center">1</span>
-          <div>
-            <p class="font-bold text-lg" style="color:#0f172a">「さわる」からスタート</p>
-            <p class="mt-1 text-sm md:text-base" style="color:#1e293b">えもじを選んだり、言葉を送ったりするだけ。AIが<strong style="color:#0f172a">絵やお話を返してくれる</strong>ので、「自分の操作で何かが起きる」体験ができます。</p>
+  <!-- 2. Staff / About -->
+  <section id="about" class="py-12 md:py-16 bg-base border-b border-brand-light/80">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label">About</span>
+        <h2 class="lp-section-title">安心できる居場所</h2>
+        <p class="lp-lead mt-3 px-2">「自分らしさ」を認められ、安心して過ごせる場所を大切にしています。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="lp-photo reveal reveal-slide-left">
+          <img src="staff.png" alt="カラーツリーのスタッフチーム" width="800" height="600" loading="lazy" />
+        </div>
+        <div class="reveal reveal-slide-right reveal-delay-1">
+          <p class="text-base font-bold mb-3" style="color:#0f172a">一人ひとりの「色（個性）」を大切に</p>
+          <p class="text-sm leading-relaxed mb-4" style="color:#475569">
+            発達に特性のあるお子さまが、好きなこと・得意なことを大切にしながら成長できるよう、専門スタッフが寄り添います。ご家庭や学校と連携し、その子だけの成長の道筋を一緒に歩みます。
+          </p>
+          <ul class="text-sm space-y-2" style="color:#475569">
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>個別支援計画に沿った、きめ細かな支援</li>
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>遊び・生活・学びを通した発達支援</li>
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>保護者さまへの説明・相談にも丁寧に対応</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Programs + kobetsu image -->
+  <section id="programs" class="py-12 md:py-16 bg-white border-b border-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-6 reveal reveal-slide-up">
+        <span class="lp-section-label">Support</span>
+        <h2 class="lp-section-title">どんな支援をするの？</h2>
+        <p class="lp-lead mt-3 px-2">一人ひとりの計画に合わせて、個別・小集団・AI体験・心のケアを組み合わせます。</p>
+      </div>
+      <div class="lp-photo mb-8 reveal reveal-slide-up">
+        <img src="kobetsu-group-ryouiku.png" alt="個別療育と小集団活動の様子" width="1200" height="675" loading="lazy" />
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 reveal reveal-slide-up">
+        <div class="lp-point py-4">
+          <p class="lp-point-icon">1️⃣</p>
+          <p class="lp-point-title">個別療育</p>
+          <p class="lp-point-desc">発達段階に合わせたマンツーマン支援</p>
+        </div>
+        <div class="lp-point py-4">
+          <p class="lp-point-icon">2️⃣</p>
+          <p class="lp-point-title">小集団</p>
+          <p class="lp-point-desc">友だちとの関わり・コミュニケーション</p>
+        </div>
+        <div class="lp-point py-4 border-t-4 border-brand">
+          <p class="lp-point-icon">3️⃣</p>
+          <p class="lp-point-title">AI体験</p>
+          <p class="lp-point-desc">遊びながら、未来につながる力を</p>
+        </div>
+        <div class="lp-point py-4 border-t-4 border-accent">
+          <p class="lp-point-icon">4️⃣</p>
+          <p class="lp-point-title">心のケア</p>
+          <p class="lp-point-desc">常駐カウンセラーが見守ります</p>
+        </div>
+      </div>
+      <div class="bg-brand-light/40 rounded-2xl p-5 md:p-6 reveal reveal-slide-up">
+        <p class="font-bold text-center mb-2" style="color:#0f172a">AI体験は、3ステップで</p>
+        <p class="text-sm text-center mb-4 px-2" style="color:#64748b">「難しそう」と思わせない工夫をしています。お子さまの特性に合わせて、無理のないペースで進めます。</p>
+        <ol class="grid md:grid-cols-3 gap-3 text-center text-sm">
+          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">① さわる</span>えもじや言葉を送るだけ。難しい操作は不要です</li>
+          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">② 遊ぶ</span>その場ですぐ体験。楽しみながら学びます</li>
+          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">③ 安心</span>カウンセラーが見守り、保護者さまにもやさしく説明</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service（短く） -->
+  <section id="service" class="py-12 md:py-16 bg-base border-b border-brand-light/80">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label">Service</span>
+        <h2 class="lp-section-title">2つのサービス</h2>
+        <p class="lp-lead mt-3 px-2">年齢や学校生活の段階に合わせて、児童発達支援と放課後等デイサービスを提供しています。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mb-6 reveal reveal-slide-up">
+        <article class="bg-white rounded-2xl p-5 border-t-4 border-brand shadow-soft">
+          <p class="text-xs font-bold text-brand-dark mb-1">未就学児</p>
+          <h3 class="font-bold text-lg mb-2" style="color:#0f172a">児童発達支援</h3>
+          <p class="text-sm mb-3" style="color:#64748b">0歳〜就学前のお子さま向け。遊びや生活のしごとを通して、コミュニケーションや身の回りのことなどを、個別中心で支援します。</p>
+          <ul class="text-xs space-y-1" style="color:#64748b">
+            <li>・個別療育・小集団活動</li>
+            <li>・保護者さまへの説明・相談</li>
+          </ul>
+        </article>
+        <article class="bg-white rounded-2xl p-5 border-t-4 border-brand-dark shadow-soft">
+          <p class="text-xs font-bold text-brand-dark mb-1">就学児〜高校生</p>
+          <h3 class="font-bold text-lg mb-2" style="color:#0f172a">放課後等デイサービス</h3>
+          <p class="text-sm mb-3" style="color:#64748b">放課後や休日に通所。学習支援や友だちとの関わり、将来に向けた準備など、学校生活とつながる支援を行います。</p>
+          <ul class="text-xs space-y-1" style="color:#64748b">
+            <li>・宿題・学習サポート</li>
+            <li>・集団活動・余暇活動</li>
+          </ul>
+        </article>
+      </div>
+      <dl class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm reveal reveal-slide-up">
+        <div class="bg-white rounded-xl p-3 text-center"><dt class="font-bold text-brand-dark text-xs">利用</dt><dd class="mt-1 text-xs" style="color:#334155">障害児通所受給者証</dd></div>
+        <div class="bg-white rounded-xl p-3 text-center"><dt class="font-bold text-brand-dark text-xs">料金</dt><dd class="mt-1 text-xs" style="color:#334155">原則1割負担</dd></div>
+        <div class="bg-white rounded-xl p-3 text-center"><dt class="font-bold text-brand-dark text-xs">時間</dt><dd class="mt-1 text-xs" style="color:#334155">平日・土曜</dd></div>
+        <div class="bg-white rounded-xl p-3 text-center"><dt class="font-bold text-brand-dark text-xs">送迎</dt><dd class="mt-1 text-xs" style="color:#334155">送迎あり</dd></div>
+      </dl>
+      <p class="text-xs text-center mt-3" style="color:#64748b">※利用時間・送迎範囲などは、見学時に個別にご案内します。</p>
+      <figure class="mt-6 bg-white rounded-2xl border border-brand-light overflow-hidden shadow-soft md:flex reveal reveal-slide-up">
+        <div class="md:w-2/5 shrink-0">
+          <img src="スクリーンショット 2026-05-15 134438.png" alt="AIってなに？の説明" class="w-full min-h-[140px] object-cover" loading="lazy" />
+        </div>
+        <figcaption class="p-4 text-sm" style="color:#334155">
+          <p class="font-bold mb-2" style="color:#0f172a">「AIってなに？」も、やさしい言葉で</p>
+          <p>保護者さま向けに、AI体験の内容や安心して過ごせる理由を、わかりやすくお伝えします。お子さまのペースを最優先に進めます。</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 一日の流れ（短く） -->
+  <section id="daily" class="py-12 md:py-16 bg-white border-b border-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label">Daily</span>
+        <h2 class="lp-section-title">一日の流れ</h2>
+        <p class="lp-lead mt-3 px-2">お子さまの利用形態に合わせて、個別療育・小集団・AI体験などを組み合わせます。時間は前後する場合があります。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 text-sm reveal reveal-slide-up">
+        <div class="bg-base rounded-2xl p-5 border border-brand-light">
+          <p class="font-bold text-brand-dark mb-3">放課後等デイ（就学児）</p>
+          <ul class="space-y-2" style="color:#334155">
+            <li><strong>14:00</strong> 来所・検温・健康チェック</li>
+            <li><strong>14:30</strong> 小集団療育（友だちとの遊び）</li>
+            <li><strong>15:00</strong> 個別療育・AI体験</li>
+            <li><strong>16:00</strong> おやつ・自由遊び</li>
+            <li><strong>17:40</strong> 帰りの会・お迎え</li>
+          </ul>
+        </div>
+        <div class="bg-base rounded-2xl p-5 border border-brand-light">
+          <p class="font-bold text-brand-dark mb-3">児童発達支援（未就学）</p>
+          <ul class="space-y-2" style="color:#334155">
+            <li><strong>9:00</strong> 来所・自由遊び</li>
+            <li><strong>10:00</strong> はじまりの会</li>
+            <li><strong>11:00</strong> 個別療育・小集団</li>
+            <li><strong>12:00</strong> 昼食</li>
+            <li><strong>午後</strong> 活動・帰りの会・お迎え</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-xs mt-4" style="color:#64748b">
+        <a href="../index.html#schedule" class="font-bold underline" style="color:#5EA847">くわしくは公式サイトへ</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Counselor -->
+  <section id="counselor" class="py-12 md:py-16 bg-base border-b border-brand-light/80">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label">Counselor</span>
+        <h2 class="lp-section-title">心理カウンセラー常駐</h2>
+        <p class="lp-lead mt-3 px-2">療育だけでなく、お子さまの気持ちにも寄り添います。遊びと心のケアをセットにした支援が、カラーツリーの特徴です。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 items-center mb-6">
+        <div class="lp-photo reveal reveal-slide-left">
+          <img src="counseling.png" alt="心理カウンセラーとお子さまの関わり" width="800" height="600" loading="lazy" />
+        </div>
+        <div class="grid gap-3 reveal reveal-slide-right">
+          <div class="bg-white rounded-xl p-4 border border-brand-light">
+            <p class="font-bold text-sm mb-2" style="color:#0f172a">お子さま</p>
+            <ul class="text-sm space-y-1.5" style="color:#475569">
+              <li>・気持ちをそっと見守り、安心できる関係をつくる</li>
+              <li>・つまずいても、また挑戦できるよう支える</li>
+              <li>・個別支援計画にも、心の様子を反映</li>
+            </ul>
           </div>
+          <div class="bg-white rounded-xl p-4 border border-brand-light">
+            <p class="font-bold text-sm mb-2" style="color:#0f172a">保護者さま</p>
+            <ul class="text-sm space-y-1.5" style="color:#475569">
+              <li>・育児の不安を、一人で抱えなくてよい</li>
+              <li>・気軽に話せる相談の窓口がある</li>
+              <li>・ご家庭の状況を踏まえたアドバイス</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ご利用の流れ -->
+  <section id="flow" class="py-12 md:py-16 bg-white border-b border-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label">Flow</span>
+        <h2 class="lp-section-title">ご利用の流れ</h2>
+        <p class="lp-lead mt-3 px-2">見学・相談は無料です。受給者証の手続きなど、わからないことはスタッフがサポートします。</p>
+      </div>
+      <ol class="lp-flow grid grid-cols-2 md:grid-cols-5 gap-3 reveal reveal-slide-up">
+        <li class="bg-base rounded-xl p-4 text-center border border-brand-light">
+          <span class="lp-flow-num inline-flex w-9 h-9 rounded-full bg-brand text-white text-sm font-bold items-center justify-center mb-2"></span>
+          <p class="font-bold text-xs mb-1" style="color:#0f172a">電話</p>
+          <p class="text-[0.65rem] leading-snug" style="color:#64748b">まずはお気軽にご連絡</p>
         </li>
-        <li class="reveal reveal-slide-up reveal-delay-2 flex gap-4 bg-white rounded-2xl p-5 border-l-4 border-brand shadow-soft">
-          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand text-white font-bold text-lg flex items-center justify-center">2</span>
-          <div>
-            <p class="font-bold text-lg" style="color:#0f172a">ゲーム感覚で続けられる</p>
-            <p class="mt-1 text-sm md:text-base" style="color:#1e293b">6種類のAIゲームから選ぶだけ。アプリのインストールは不要で、<strong style="color:#0f172a">その場ですぐ遊べます</strong>。お子さまのペースに合わせて時間も調整します。</p>
-          </div>
+        <li class="bg-base rounded-xl p-4 text-center border border-brand-light">
+          <span class="lp-flow-num inline-flex w-9 h-9 rounded-full bg-brand text-white text-sm font-bold items-center justify-center mb-2"></span>
+          <p class="font-bold text-xs mb-1" style="color:#0f172a">見学</p>
+          <p class="text-[0.65rem] leading-snug" style="color:#64748b">施設の雰囲気を確認</p>
         </li>
-        <li class="reveal reveal-slide-up reveal-delay-3 flex gap-4 bg-white rounded-2xl p-5 border-l-4 border-brand shadow-soft">
-          <span class="flex-shrink-0 w-10 h-10 rounded-full bg-brand text-white font-bold text-lg flex items-center justify-center">3</span>
-          <div>
-            <p class="font-bold text-lg" style="color:#0f172a">心のケアもセット</p>
-            <p class="mt-1 text-sm md:text-base" style="color:#1e293b">新しいことに挑戦すると、うれしい反面、不安になる日もあります。<strong style="color:#0f172a">心理カウンセラーが常駐</strong>しているので、気持ちのケアもあわせて支えます。</p>
-          </div>
+        <li class="bg-base rounded-xl p-4 text-center border border-brand-light">
+          <span class="lp-flow-num inline-flex w-9 h-9 rounded-full bg-brand text-white text-sm font-bold items-center justify-center mb-2"></span>
+          <p class="font-bold text-xs mb-1" style="color:#0f172a">受給者証</p>
+          <p class="text-[0.65rem] leading-snug" style="color:#64748b">申請方法をご案内</p>
+        </li>
+        <li class="bg-base rounded-xl p-4 text-center border border-brand-light">
+          <span class="lp-flow-num inline-flex w-9 h-9 rounded-full bg-brand text-white text-sm font-bold items-center justify-center mb-2"></span>
+          <p class="font-bold text-xs mb-1" style="color:#0f172a">契約</p>
+          <p class="text-[0.65rem] leading-snug" style="color:#64748b">利用計画を作成</p>
+        </li>
+        <li class="bg-base rounded-xl p-4 text-center border border-brand-light">
+          <span class="lp-flow-num inline-flex w-9 h-9 rounded-full bg-brand-dark text-white text-sm font-bold items-center justify-center mb-2"></span>
+          <p class="font-bold text-xs mb-1" style="color:#0f172a">通所開始</p>
+          <p class="text-[0.65rem] leading-snug" style="color:#64748b">通所スタート</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- Games -->
-  <section id="games" class="bg-base border-b border-brand-light/80 py-12 md:py-14">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="lp-h2 text-xl md:text-2xl font-bold reveal reveal-slide-up">
-        遊べるAIゲーム（全6種）
-      </h2>
-      <p class="mt-2 lp-body text-sm md:text-base reveal reveal-slide-up">
-        ブラウザ上で動くゲーム・創作ツールです。一覧から選んで、すぐ体験できます。下は代表的な4つです。
-      </p>
-
-      <div class="mt-6 grid gap-5 sm:grid-cols-2">
-        <article class="bg-white rounded-2xl border border-brand-light shadow-soft overflow-hidden reveal reveal-slide-left">
-          <img src="スクリーンショット 2026-05-15 134428.png" alt="えもじふしぎばこ" class="w-full aspect-video object-cover object-top" loading="lazy" />
-          <div class="p-4">
-            <p class="text-xs font-bold text-brand-dark">クリエイティブ</p>
-            <h3 class="lp-h3 font-bold text-lg mt-1">えもじふしぎばこ</h3>
-            <p class="mt-2 text-sm lp-body">えもじを組み合わせて、かわいい・リアルなどの<strong class="text-slate-900">画風を選ぶだけ</strong>。AIが絵とストーリーをつくります。</p>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-2xl border border-brand-light shadow-soft overflow-hidden reveal reveal-slide-right reveal-delay-1">
-          <img src="スクリーンショット 2026-05-15 134514.png" alt="どうぶつえさやりひろば" class="w-full aspect-video object-cover object-top" loading="lazy" />
-          <div class="p-4">
-            <p class="text-xs font-bold text-brand-dark">コミュニケーション</p>
-            <h3 class="lp-h3 font-bold text-lg mt-1">どうぶつえさやりひろば</h3>
-            <p class="mt-2 text-sm lp-body">おしゃべりどうぶつと<strong class="text-slate-900">やりとり</strong>する遊び。相手を想像する力の練習になります。</p>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-2xl border border-brand-light shadow-soft overflow-hidden reveal reveal-slide-left reveal-delay-2">
-          <img src="スクリーンショット 2026-05-15 134529.png" alt="お話しキャラクター" class="w-full aspect-video object-cover object-top" loading="lazy" />
-          <div class="p-4">
-            <p class="text-xs font-bold text-brand-dark">対話・表現</p>
-            <h3 class="lp-h3 font-bold text-lg mt-1">お話しキャラクター体験</h3>
-            <p class="mt-2 text-sm lp-body">性格の違うキャラと<strong class="text-slate-900">会話</strong>。あいさつや自己紹介など、場面に合った言葉を選ぶ練習に。</p>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-2xl border border-brand-light shadow-soft overflow-hidden reveal reveal-slide-right reveal-delay-3">
-          <img src="freaks-race.png" alt="FREAKS RACE" class="w-full aspect-video object-cover object-center" loading="lazy" />
-          <div class="p-4">
-            <p class="text-xs font-bold text-brand-dark">アクションほか</p>
-            <h3 class="lp-h3 font-bold text-lg mt-1">FREAKS RACE など</h3>
-            <p class="mt-2 text-sm lp-body">近未来レースなど、<strong class="text-slate-900">反応や判断力</strong>を使うゲームも。好きなものから選べます。</p>
-          </div>
-        </article>
+  <!-- Contact -->
+  <section id="contact" class="bg-gradient-to-br from-brand to-brand-dark py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label" style="color:#FFD166">Contact</span>
+        <h2 class="text-xl md:text-2xl font-bold lp-on-green">まずはお電話ください</h2>
+        <p class="text-sm lp-on-green-muted mt-2">見学・相談は無料</p>
       </div>
-
-      <figure class="mt-8 bg-white rounded-2xl border border-brand-light overflow-hidden shadow-card reveal reveal-slide-up">
-        <img src="スクリーンショット 2026-05-15 134403.png" alt="ゲームを選ぶ画面" class="w-full max-h-56 object-cover object-top" loading="lazy" />
-        <figcaption class="p-4 text-sm lp-body border-t border-brand-light bg-brand-light/30">
-          <strong class="text-slate-900">選んで、すぐ遊べる。</strong> 難しい設定やインストールは不要です。スタッフがお子さまに合わせてご案内します。
-        </figcaption>
-      </figure>
-
-      <figure class="mt-5 bg-white rounded-2xl border border-brand-light overflow-hidden shadow-soft md:flex reveal reveal-slide-up">
-        <div class="md:w-2/5 shrink-0 border-b md:border-b-0 md:border-r border-brand-light bg-brand-light/40">
-          <img src="スクリーンショット 2026-05-15 134438.png" alt="AIってなに？の説明画面" class="w-full h-full min-h-[180px] object-cover object-center" loading="lazy" />
+      <div class="grid md:grid-cols-2 gap-6 items-start">
+        <div class="text-center md:text-left reveal reveal-slide-left flex flex-col items-center md:items-start">
+          <img src="img9616.png" alt="" class="lp-contact-mascot" width="160" height="160" loading="lazy" aria-hidden="true" />
+          <a href="tel:093-967-1522" class="text-3xl md:text-4xl font-bold lp-on-green hover:opacity-90">093-967-1522</a>
+          <p class="mt-3 text-xs lp-on-green-muted">〒802-0976 北九州市小倉南区南方5丁目15-21<br />平日10:00〜17:10／土10:00〜16:00</p>
+          <a href="tel:093-967-1522" class="lp-cta mt-4 font-bold bg-white rounded-full shadow-soft hover:bg-brand-light transition-colors" style="color:#5EA847">見学・相談は無料（電話する）</a>
         </div>
-        <figcaption class="p-5 text-sm lp-body md:flex md:items-center">
-          <span>
-            <strong class="text-slate-900 block mb-1">遊びの途中で「AIってなに？」も</strong>
-            難しい説明はしません。体験しながら、やさしい言葉でAIの役割を伝えます。
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- Counselor -->
-  <section id="counselor" class="bg-white border-b border-brand-light py-12 md:py-14">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl md:text-2xl font-bold reveal reveal-slide-up" style="color:#0f172a">
-        心理カウンセラーが常駐している理由
-      </h2>
-      <p class="mt-3 text-base reveal reveal-slide-up" style="color:#1e293b">
-        AI体験は「楽しい」一方で、できない・失敗する・比べてしまう——そんな気持ちも出てきます。
-        だからカラーツリーでは、<strong style="color:#0f172a">遊びと心のケアをセット</strong>にしています。
-      </p>
-
-      <div class="mt-8 grid md:grid-cols-2 gap-5 reveal reveal-slide-up reveal-delay-1">
-        <div class="bg-white rounded-2xl p-5 border border-brand-light shadow-soft">
-          <h3 class="font-bold text-lg flex items-center gap-2" style="color:#0f172a">
-            <span class="text-2xl" aria-hidden="true">👧</span>
-            お子さまへのメリット
-          </h3>
-          <ul class="mt-4 space-y-3 text-sm" style="color:#1e293b">
-            <li class="flex gap-2"><span class="font-bold shrink-0" style="color:#5EA847">・</span><span>毎日の<strong style="color:#0f172a">気持ちの変化</strong>を、専門家がそっと見守る</span></li>
-            <li class="flex gap-2"><span class="font-bold shrink-0" style="color:#5EA847">・</span><span>「できなかった」ときも、<strong style="color:#0f172a">安心してまた挑戦</strong>できる</span></li>
-            <li class="flex gap-2"><span class="font-bold shrink-0" style="color:#5EA847">・</span><span>言葉にできない不安を、<strong style="color:#0f172a">遊びや会話</strong>を通して整理できる</span></li>
-          </ul>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-card reveal reveal-slide-right">
+          <div class="px-3 py-2 border-b border-brand-light text-sm font-bold" style="color:#0f172a">📍 駐車場あり</div>
+          <div class="relative" style="padding-top:56%;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d828.6097081274396!2d130.85996006963796!3d33.82679196241607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3543c773bea79551%3A0xfba2089edc402461!2sCan%20Be!5e0!3m2!1sja!2sjp!4v1778231645185!5m2!1sja!2sjp" class="absolute inset-0 w-full h-full border-0" loading="lazy" title="アクセスマップ" aria-label="Googleマップ"></iframe>
+          </div>
+          <div class="p-2 text-center">
+            <a href="https://maps.app.goo.gl/sAcV4hRVBr8iu4fYA" target="_blank" rel="noopener noreferrer" class="text-xs font-bold" style="color:#5EA847">地図を大きく見る</a>
+          </div>
         </div>
-
-        <div class="bg-white rounded-2xl p-5 border border-brand-light shadow-soft">
-          <h3 class="font-bold text-lg flex items-center gap-2" style="color:#0f172a">
-            <span class="text-2xl" aria-hidden="true">👨‍👩‍👧</span>
-            保護者さまへのメリット
-          </h3>
-          <ul class="mt-4 space-y-3 text-sm" style="color:#1e293b">
-            <li class="flex gap-2"><span class="font-bold shrink-0" style="color:#5EA847">・</span><span>「ゲームばかり…」という<strong style="color:#0f172a">心配を一人で抱えなくてよい</strong></span></li>
-            <li class="flex gap-2"><span class="font-bold shrink-0" style="color:#5EA847">・</span><span>育児や発達のこと、<strong style="color:#0f172a">気軽に相談</strong>できる窓口がある</span></li>
-            <li class="flex gap-2"><span class="font-bold shrink-0" style="color:#5EA847">・</span><span>施設と家庭が<strong style="color:#0f172a">同じ方向</strong>で子どもを支えられる</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-6 reveal reveal-slide-up reveal-delay-2">
-        <h3 class="font-bold text-base mb-3" style="color:#0f172a">具体的なサポート内容</h3>
-        <ul class="grid sm:grid-cols-3 gap-3">
-          <li class="bg-brand-light/40 rounded-xl px-4 py-4 border border-brand-light shadow-sm text-sm text-center" style="color:#1e293b">
-            <span class="block font-bold mb-1" style="color:#0f172a">日常の心のケア</span>
-            その日の様子に合わせた関わり
-          </li>
-          <li class="bg-brand-light/40 rounded-xl px-4 py-4 border border-brand-light shadow-sm text-sm text-center" style="color:#1e293b">
-            <span class="block font-bold mb-1" style="color:#0f172a">保護者相談</span>
-            育児の悩み・不安の共有
-          </li>
-          <li class="bg-brand-light/40 rounded-xl px-4 py-4 border border-brand-light shadow-sm text-sm text-center" style="color:#1e293b">
-            <span class="block font-bold mb-1" style="color:#0f172a">支援計画への反映</span>
-            お子さまに合わせた調整
-          </li>
-        </ul>
-        <p class="mt-4 text-sm" style="color:#475569">
-          ※カウンセラーは療育スタッフと連携し、AI体験の内容や時間も無理のない範囲で進めます。
-        </p>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-brand-dark py-12 md:py-14">
-    <div class="max-w-4xl mx-auto px-4 text-center reveal reveal-slide-up">
-      <p class="text-xl font-bold lp-on-green">まずはお電話ください</p>
-      <p class="mt-2 lp-on-green-muted text-sm md:text-base">見学・ご相談は無料です。わからないこと、何でも聞いてください。</p>
-      <a href="tel:093-967-1522" class="inline-flex mt-6 items-center justify-center min-h-[52px] px-10 text-xl font-bold bg-white text-brand-dark rounded-full shadow-soft hover:bg-brand-light transition-colors">
-        093-967-1522
-      </a>
-      <p class="mt-5 text-xs lp-on-green-muted leading-relaxed">
-        児童発達支援・放課後等デイサービス「カラーツリー」<br />
-        〒802-0976 福岡県北九州市小倉南区南方5丁目15-21
-      </p>
-    </div>
-  </section>
-
-  <footer class="bg-brand-dark border-t border-white/15 py-6">
-    <div class="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-6 text-xs text-white/80">
-      <a href="../index.html" class="hover:text-white transition-colors">公式サイト</a>
-      <a href="../privacy.html" class="hover:text-white transition-colors">プライバシーポリシー</a>
-    </div>
+  <footer class="bg-brand-dark py-6 text-center text-xs text-white/70">
+    <p class="mb-3">
+      <a href="../index.html" class="hover:text-white mx-2">公式サイト</a>
+      <a href="../privacy.html" class="hover:text-white mx-2">プライバシー</a>
+    </p>
+    <p>児童発達支援・放課後等デイサービス カラーツリー</p>
   </footer>
 
   <script>
@@ -402,7 +425,6 @@
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
       nodes.forEach(function (el) { obs.observe(el); });
-
       document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
           var href = this.getAttribute('href');
@@ -411,8 +433,7 @@
           if (target) {
             e.preventDefault();
             var header = document.querySelector('header');
-            var offset = header ? header.offsetHeight + 12 : 72;
-            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - (header ? header.offsetHeight + 12 : 64), behavior: 'smooth' });
           }
         });
       });
