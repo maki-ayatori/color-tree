@@ -35,15 +35,6 @@
     .lp-on-green { color: #fff; }
     .lp-on-green-muted { color: rgba(255,255,255,0.92); }
     .lp-accent-on-green { color: #FFD166; }
-    .lp-recruit-strip {
-      background: #FFD166;
-      color: #0f172a;
-      text-align: center;
-      font-weight: 800;
-      font-size: clamp(0.95rem, 3.2vw, 1.25rem);
-      letter-spacing: 0.28em;
-      padding: 0.55rem 1rem;
-    }
     .lp-recruit-hero {
       font-size: clamp(3rem, 14vw, 6.5rem);
       font-weight: 900;
@@ -255,8 +246,6 @@
     </div>
   </header>
 
-  <p class="lp-recruit-strip" role="status">利用者募集</p>
-
   <!-- 1. Hero -->
   <section class="bg-gradient-to-br from-brand via-brand to-brand-dark shadow-hero" aria-label="メインビジュアル">
     <div class="max-w-6xl mx-auto px-4 pt-8 pb-10 md:pt-10 md:pb-14">
@@ -377,15 +366,6 @@
           <p class="lp-point-desc">保護者向けカウンセラーが常駐</p>
         </div>
       </div>
-      <div class="bg-brand-light/40 rounded-2xl p-5 md:p-6 reveal reveal-slide-up">
-        <p class="font-bold text-center mb-2" style="color:#0f172a">AI体験は、3ステップで</p>
-        <p class="text-sm text-center mb-4 px-2" style="color:#64748b">「難しそう」と思わせない工夫をしています。お子さまの特性に合わせて、無理のないペースで進めます。</p>
-        <ol class="grid md:grid-cols-3 gap-3 text-center text-sm">
-          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">① さわる</span>えもじや言葉を送るだけ。難しい操作は不要です</li>
-          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">② 遊ぶ</span>その場ですぐ体験。楽しみながら学びます</li>
-          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">③ 安心</span>保護者向けカウンセラーが、体験内容や不安についてもご説明</li>
-        </ol>
-      </div>
     </div>
   </section>
 
@@ -424,7 +404,49 @@
         <div class="bg-white rounded-xl p-3 text-center"><dt class="font-bold text-brand-dark text-xs">送迎</dt><dd class="mt-1 text-xs" style="color:#334155">送迎あり</dd></div>
       </dl>
       <p class="text-xs text-center mt-3" style="color:#64748b">※利用時間・送迎範囲などは、見学時に個別にご案内します。</p>
-      <figure class="mt-6 bg-white rounded-2xl border border-brand-light shadow-soft md:flex reveal reveal-slide-up">
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section id="ai" class="py-12 md:py-16 bg-white border-b border-brand-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8 reveal reveal-slide-up">
+        <span class="lp-section-label">AI</span>
+        <h2 class="lp-section-title">AIが児童発達支援・放課後等デイサービスにプラスになる</h2>
+        <p class="lp-lead mt-3 px-2">カラーツリーでは、児童発達支援・放課後等デイサービスの療育のなかに、AI体験を自然に組み込んでいます。難しい機械操作は不要。遊びや創作の延長として、お子さまの「できた」を増やします。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mb-8 reveal reveal-slide-up">
+        <article class="bg-base rounded-2xl p-5 border border-brand-light">
+          <p class="text-2xl mb-2" aria-hidden="true">👶</p>
+          <h3 class="font-bold text-base mb-2" style="color:#0f172a">児童発達支援でのプラス</h3>
+          <p class="text-sm leading-relaxed mb-3" style="color:#475569">未就学のお子さまには、絵や言葉でAIとやりとりする体験を。コミュニケーションや表現のきっかけになり、好きなこと・得意なこととつなげて支援できます。</p>
+          <ul class="text-xs space-y-1.5" style="color:#64748b">
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>絵やえもじで「伝える」練習につながる</li>
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>遊びのなかで、新しい表現に挑戦できる</li>
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>個別療育の目標に合わせて取り入れられる</li>
+          </ul>
+        </article>
+        <article class="bg-base rounded-2xl p-5 border border-brand-light">
+          <p class="text-2xl mb-2" aria-hidden="true">🎒</p>
+          <h3 class="font-bold text-base mb-2" style="color:#0f172a">放課後等デイでのプラス</h3>
+          <p class="text-sm leading-relaxed mb-3" style="color:#475569">就学児〜高校生には、学習や創作への応用も。宿題のヒントづくりや作品づくりなど、学校生活や将来の自立につながるデジタル力を、無理のないペースで育てます。</p>
+          <ul class="text-xs space-y-1.5" style="color:#64748b">
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>学習・創作でAIツールの基礎に触れられる</li>
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>「できた」体験が、自信につながる</li>
+            <li class="flex gap-2"><span class="text-brand-dark font-bold shrink-0">✓</span>将来の仕事や生活にも役立つ力を育てる</li>
+          </ul>
+        </article>
+      </div>
+      <div class="bg-brand-light/40 rounded-2xl p-5 md:p-6 mb-8 reveal reveal-slide-up">
+        <p class="font-bold text-center mb-2" style="color:#0f172a">AI体験は、3ステップで</p>
+        <p class="text-sm text-center mb-4 px-2" style="color:#64748b">「難しそう」と思わせない工夫をしています。お子さまの特性に合わせて、無理のないペースで進めます。</p>
+        <ol class="grid md:grid-cols-3 gap-3 text-center text-sm">
+          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">① さわる</span>えもじや言葉を送るだけ。難しい操作は不要です</li>
+          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">② 遊ぶ</span>その場ですぐ体験。楽しみながら学びます</li>
+          <li class="bg-white rounded-xl p-4"><span class="font-bold block mb-1" style="color:#5EA847">③ 安心</span>保護者向けカウンセラーが、体験内容や不安についてもご説明</li>
+        </ol>
+      </div>
+      <figure class="bg-base rounded-2xl border border-brand-light shadow-soft md:flex reveal reveal-slide-up">
         <div class="md:w-2/5 shrink-0 overflow-hidden rounded-t-2xl md:rounded-tr-none md:rounded-bl-2xl">
           <img src="スクリーンショット 2026-05-15 134438.png" alt="AIってなに？の説明" class="w-full min-h-[140px] object-cover" loading="lazy" />
         </div>
@@ -441,7 +463,7 @@
   </section>
 
   <!-- 一日の流れ（短く） -->
-  <section id="daily" class="py-12 md:py-16 bg-white border-b border-brand-light">
+  <section id="daily" class="py-12 md:py-16 bg-base border-b border-brand-light/80">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-8 reveal reveal-slide-up">
         <span class="lp-section-label">Daily</span>
