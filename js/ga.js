@@ -1,10 +1,8 @@
 /**
  * Google アナリティクス 4（gtag.js）
- * 管理画面で発行した「測定ID」（G- で始まる文字列）に書き換えてください。
- * 未設定のままでは読み込み・送信を行いません。
  */
 (function () {
-  var MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  var MEASUREMENT_ID = 'G-TGJKET05V2';
 
   if (
     !MEASUREMENT_ID ||
